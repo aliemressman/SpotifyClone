@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_clone/common/widgets/appbar/basic_app_bar.dart';
 import 'package:spotify_clone/common/widgets/button/basic_app_button.dart';
-import 'package:spotify_clone/presentation/auth/pages/signin.dart';
+import 'package:spotify_clone/presentation/auth/pages/signup.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class SignIn extends StatefulWidget {
+  const SignIn({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: _signupText(context),
+      bottomNavigationBar: _signInText(context),
       appBar: BasicAppBar(
         title: Image.asset(
           'assets/vectors/spotify_logo.png',
@@ -29,15 +29,13 @@ class _SignUpState extends State<SignUp> {
           children: [
             _registerText(),
             const SizedBox(height: 50),
-            _fullNameField(context),
-            const SizedBox(height: 20),
             _emailField(context),
             const SizedBox(height: 20),
             _passwordField(context),
             const SizedBox(height: 20),
             BasicAppButton(
               onPressed: () {},
-              title: 'Create Account',
+              title: 'Sign In',
             ),
           ],
         ),
@@ -48,17 +46,10 @@ class _SignUpState extends State<SignUp> {
 
 Widget _registerText() {
   return const Text(
-    'Register',
+    'Sign In',
     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
     textAlign: TextAlign.center,
   );
-}
-
-Widget _fullNameField(BuildContext context) {
-  return TextFormField(
-      decoration: const InputDecoration(
-    hintText: 'Full Name',
-  ).applyDefaults(Theme.of(context).inputDecorationTheme));
 }
 
 Widget _emailField(BuildContext context) {
@@ -75,27 +66,27 @@ Widget _passwordField(BuildContext context) {
   ).applyDefaults(Theme.of(context).inputDecorationTheme));
 }
 
-Widget _signupText(BuildContext context) {
+Widget _signInText(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 30),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
-          'Do you have an account?',
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+          'Not a Member ?',
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
         ),
         TextButton(
           onPressed: () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (BuildContext context) => const SignIn(),
+                builder: (BuildContext context) => const SignUp(),
               ),
             );
           },
           child: const Text(
-            'Sign In',
+            'Register Now',
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
         ),
